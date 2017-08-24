@@ -103,5 +103,33 @@ module.exports = [
             }
         }
     }
+},
+{
+    method: 'GET',
+    path : '/user/getUserData',
+    handler:(request,response)=>
+    {
+        Controller.userController.getUserData((err,data)=>
+            {
+                if(err)
+                    {
+                        response(err);
+                    }
+                    else{
+                        response(data);
+                    }
+            })
+    },
+    config:{
+        tags:['api'],
+        description:'login api',
+        validate:{
+        },
+        plugins:{
+            'hapi-swagger':{
+                payloadType : 'form'
+            }
+        }
+    }
 }
 ];

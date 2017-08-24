@@ -212,8 +212,23 @@ const Services = require('../Services');
     })
   }
 
+
+  var getUserData = function(callback)
+  {
+    Services.dbCommonServices.getData("user", {}, {},{},(err,result)=>
+    {
+        if(err)
+            {
+                callback(err);
+            }
+            else{
+                callback(null,result);
+            }
+    })
+  }
   module.exports = {
       signUp : signUp,
       login : login,
-      verifyEmail : verifyEmail
+      verifyEmail : verifyEmail, 
+      getUserData : getUserData
   }
